@@ -1,0 +1,1199 @@
+[0000] ============================================================
+  timestamp: 2026-05-26T00:00:00.000Z  level: ERROR
+  service: api-gateway  trace_id: 00000000000000000000000000000000
+  message: Processing request batch-0, items_processed=0, latency_ms=10
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0001] ============================================================
+  timestamp: 2026-05-26T00:01:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000001
+  message: Processing request batch-0, items_processed=7, latency_ms=11
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0002] ============================================================
+  timestamp: 2026-05-26T00:02:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000002
+  message: Processing request batch-0, items_processed=14, latency_ms=12
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0003] ============================================================
+  timestamp: 2026-05-26T00:03:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000003
+  message: Processing request batch-0, items_processed=21, latency_ms=13
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0004] ============================================================
+  timestamp: 2026-05-26T00:04:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000004
+  message: Processing request batch-0, items_processed=28, latency_ms=14
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0005] ============================================================
+  timestamp: 2026-05-26T00:05:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000005
+  message: Processing request batch-0, items_processed=35, latency_ms=15
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0006] ============================================================
+  timestamp: 2026-05-26T00:06:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000006
+  message: Processing request batch-0, items_processed=42, latency_ms=16
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0007] ============================================================
+  timestamp: 2026-05-26T00:07:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000007
+  message: Processing request batch-0, items_processed=49, latency_ms=17
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0008] ============================================================
+  timestamp: 2026-05-26T00:08:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000008
+  message: Processing request batch-0, items_processed=56, latency_ms=18
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0009] ============================================================
+  timestamp: 2026-05-26T00:09:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000009
+  message: Processing request batch-0, items_processed=63, latency_ms=19
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0010] ============================================================
+  timestamp: 2026-05-26T00:10:00.000Z  level: WARN
+  service: user-service  trace_id: 0000000000000000000000000000000a
+  message: Processing request batch-1, items_processed=70, latency_ms=20
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0011] ============================================================
+  timestamp: 2026-05-26T00:11:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000000b
+  message: Processing request batch-1, items_processed=77, latency_ms=21
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0012] ============================================================
+  timestamp: 2026-05-26T00:12:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000000c
+  message: Processing request batch-1, items_processed=84, latency_ms=22
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0013] ============================================================
+  timestamp: 2026-05-26T00:13:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000000d
+  message: Processing request batch-1, items_processed=91, latency_ms=23
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0014] ============================================================
+  timestamp: 2026-05-26T00:14:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000000e
+  message: Processing request batch-1, items_processed=98, latency_ms=24
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0015] ============================================================
+  timestamp: 2026-05-26T00:15:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000000f
+  message: Processing request batch-1, items_processed=105, latency_ms=25
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0016] ============================================================
+  timestamp: 2026-05-26T00:16:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000010
+  message: Processing request batch-1, items_processed=112, latency_ms=26
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0017] ============================================================
+  timestamp: 2026-05-26T00:17:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000011
+  message: Processing request batch-1, items_processed=119, latency_ms=27
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0018] ============================================================
+  timestamp: 2026-05-26T00:18:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000012
+  message: Processing request batch-1, items_processed=126, latency_ms=28
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0019] ============================================================
+  timestamp: 2026-05-26T00:19:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000013
+  message: Processing request batch-1, items_processed=133, latency_ms=29
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0020] ============================================================
+  timestamp: 2026-05-26T00:20:00.000Z  level: ERROR
+  service: order-service  trace_id: 00000000000000000000000000000014
+  message: Processing request batch-2, items_processed=140, latency_ms=30
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0021] ============================================================
+  timestamp: 2026-05-26T00:21:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000015
+  message: Processing request batch-2, items_processed=147, latency_ms=31
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0022] ============================================================
+  timestamp: 2026-05-26T00:22:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000016
+  message: Processing request batch-2, items_processed=154, latency_ms=32
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0023] ============================================================
+  timestamp: 2026-05-26T00:23:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000017
+  message: Processing request batch-2, items_processed=161, latency_ms=33
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0024] ============================================================
+  timestamp: 2026-05-26T01:24:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000018
+  message: Processing request batch-2, items_processed=168, latency_ms=34
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0025] ============================================================
+  timestamp: 2026-05-26T01:25:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000019
+  message: Processing request batch-2, items_processed=175, latency_ms=35
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0026] ============================================================
+  timestamp: 2026-05-26T01:26:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000001a
+  message: Processing request batch-2, items_processed=182, latency_ms=36
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0027] ============================================================
+  timestamp: 2026-05-26T01:27:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000001b
+  message: Processing request batch-2, items_processed=189, latency_ms=37
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0028] ============================================================
+  timestamp: 2026-05-26T01:28:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000001c
+  message: Processing request batch-2, items_processed=196, latency_ms=38
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0029] ============================================================
+  timestamp: 2026-05-26T01:29:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000001d
+  message: Processing request batch-2, items_processed=203, latency_ms=39
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0030] ============================================================
+  timestamp: 2026-05-26T01:30:00.000Z  level: WARN
+  service: api-gateway  trace_id: 0000000000000000000000000000001e
+  message: Processing request batch-3, items_processed=210, latency_ms=40
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0031] ============================================================
+  timestamp: 2026-05-26T01:31:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000001f
+  message: Processing request batch-3, items_processed=217, latency_ms=41
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0032] ============================================================
+  timestamp: 2026-05-26T01:32:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000020
+  message: Processing request batch-3, items_processed=224, latency_ms=42
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0033] ============================================================
+  timestamp: 2026-05-26T01:33:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000021
+  message: Processing request batch-3, items_processed=231, latency_ms=43
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0034] ============================================================
+  timestamp: 2026-05-26T01:34:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000022
+  message: Processing request batch-3, items_processed=238, latency_ms=44
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0035] ============================================================
+  timestamp: 2026-05-26T01:35:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000023
+  message: Processing request batch-3, items_processed=245, latency_ms=45
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0036] ============================================================
+  timestamp: 2026-05-26T01:36:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000024
+  message: Processing request batch-3, items_processed=252, latency_ms=46
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0037] ============================================================
+  timestamp: 2026-05-26T01:37:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000025
+  message: Processing request batch-3, items_processed=259, latency_ms=47
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0038] ============================================================
+  timestamp: 2026-05-26T01:38:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000026
+  message: Processing request batch-3, items_processed=266, latency_ms=48
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0039] ============================================================
+  timestamp: 2026-05-26T01:39:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000027
+  message: Processing request batch-3, items_processed=273, latency_ms=49
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0040] ============================================================
+  timestamp: 2026-05-26T01:40:00.000Z  level: ERROR
+  service: user-service  trace_id: 00000000000000000000000000000028
+  message: Processing request batch-4, items_processed=280, latency_ms=50
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0041] ============================================================
+  timestamp: 2026-05-26T01:41:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000029
+  message: Processing request batch-4, items_processed=287, latency_ms=51
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0042] ============================================================
+  timestamp: 2026-05-26T01:42:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000002a
+  message: Processing request batch-4, items_processed=294, latency_ms=52
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0043] ============================================================
+  timestamp: 2026-05-26T01:43:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000002b
+  message: Processing request batch-4, items_processed=301, latency_ms=53
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0044] ============================================================
+  timestamp: 2026-05-26T01:44:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000002c
+  message: Processing request batch-4, items_processed=308, latency_ms=54
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0045] ============================================================
+  timestamp: 2026-05-26T01:45:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000002d
+  message: Processing request batch-4, items_processed=315, latency_ms=55
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0046] ============================================================
+  timestamp: 2026-05-26T01:46:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000002e
+  message: Processing request batch-4, items_processed=322, latency_ms=56
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0047] ============================================================
+  timestamp: 2026-05-26T01:47:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000002f
+  message: Processing request batch-4, items_processed=329, latency_ms=57
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0048] ============================================================
+  timestamp: 2026-05-26T02:48:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000030
+  message: Processing request batch-4, items_processed=336, latency_ms=58
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0049] ============================================================
+  timestamp: 2026-05-26T02:49:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000031
+  message: Processing request batch-4, items_processed=343, latency_ms=59
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0050] ============================================================
+  timestamp: 2026-05-26T02:50:00.000Z  level: WARN
+  service: order-service  trace_id: 00000000000000000000000000000032
+  message: Processing request batch-5, items_processed=350, latency_ms=10
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0051] ============================================================
+  timestamp: 2026-05-26T02:51:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000033
+  message: Processing request batch-5, items_processed=357, latency_ms=11
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0052] ============================================================
+  timestamp: 2026-05-26T02:52:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000034
+  message: Processing request batch-5, items_processed=364, latency_ms=12
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0053] ============================================================
+  timestamp: 2026-05-26T02:53:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000035
+  message: Processing request batch-5, items_processed=371, latency_ms=13
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0054] ============================================================
+  timestamp: 2026-05-26T02:54:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000036
+  message: Processing request batch-5, items_processed=378, latency_ms=14
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0055] ============================================================
+  timestamp: 2026-05-26T02:55:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000037
+  message: Processing request batch-5, items_processed=385, latency_ms=15
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0056] ============================================================
+  timestamp: 2026-05-26T02:56:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000038
+  message: Processing request batch-5, items_processed=392, latency_ms=16
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0057] ============================================================
+  timestamp: 2026-05-26T02:57:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000039
+  message: Processing request batch-5, items_processed=399, latency_ms=17
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0058] ============================================================
+  timestamp: 2026-05-26T02:58:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000003a
+  message: Processing request batch-5, items_processed=406, latency_ms=18
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0059] ============================================================
+  timestamp: 2026-05-26T02:59:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000003b
+  message: Processing request batch-5, items_processed=413, latency_ms=19
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0060] ============================================================
+  timestamp: 2026-05-26T02:00:00.000Z  level: ERROR
+  service: api-gateway  trace_id: 0000000000000000000000000000003c
+  message: Processing request batch-6, items_processed=420, latency_ms=20
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0061] ============================================================
+  timestamp: 2026-05-26T02:01:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000003d
+  message: Processing request batch-6, items_processed=427, latency_ms=21
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0062] ============================================================
+  timestamp: 2026-05-26T02:02:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000003e
+  message: Processing request batch-6, items_processed=434, latency_ms=22
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0063] ============================================================
+  timestamp: 2026-05-26T02:03:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000003f
+  message: Processing request batch-6, items_processed=441, latency_ms=23
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0064] ============================================================
+  timestamp: 2026-05-26T02:04:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000040
+  message: Processing request batch-6, items_processed=448, latency_ms=24
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0065] ============================================================
+  timestamp: 2026-05-26T02:05:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000041
+  message: Processing request batch-6, items_processed=455, latency_ms=25
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0066] ============================================================
+  timestamp: 2026-05-26T02:06:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000042
+  message: Processing request batch-6, items_processed=462, latency_ms=26
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0067] ============================================================
+  timestamp: 2026-05-26T02:07:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000043
+  message: Processing request batch-6, items_processed=469, latency_ms=27
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0068] ============================================================
+  timestamp: 2026-05-26T02:08:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000044
+  message: Processing request batch-6, items_processed=476, latency_ms=28
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0069] ============================================================
+  timestamp: 2026-05-26T02:09:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000045
+  message: Processing request batch-6, items_processed=483, latency_ms=29
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0070] ============================================================
+  timestamp: 2026-05-26T02:10:00.000Z  level: WARN
+  service: user-service  trace_id: 00000000000000000000000000000046
+  message: Processing request batch-7, items_processed=490, latency_ms=30
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0071] ============================================================
+  timestamp: 2026-05-26T02:11:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000047
+  message: Processing request batch-7, items_processed=497, latency_ms=31
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0072] ============================================================
+  timestamp: 2026-05-26T03:12:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000048
+  message: Processing request batch-7, items_processed=504, latency_ms=32
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0073] ============================================================
+  timestamp: 2026-05-26T03:13:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000049
+  message: Processing request batch-7, items_processed=511, latency_ms=33
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0074] ============================================================
+  timestamp: 2026-05-26T03:14:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000004a
+  message: Processing request batch-7, items_processed=518, latency_ms=34
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0075] ============================================================
+  timestamp: 2026-05-26T03:15:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000004b
+  message: Processing request batch-7, items_processed=525, latency_ms=35
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0076] ============================================================
+  timestamp: 2026-05-26T03:16:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000004c
+  message: Processing request batch-7, items_processed=532, latency_ms=36
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0077] ============================================================
+  timestamp: 2026-05-26T03:17:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000004d
+  message: Processing request batch-7, items_processed=539, latency_ms=37
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0078] ============================================================
+  timestamp: 2026-05-26T03:18:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000004e
+  message: Processing request batch-7, items_processed=546, latency_ms=38
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0079] ============================================================
+  timestamp: 2026-05-26T03:19:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000004f
+  message: Processing request batch-7, items_processed=553, latency_ms=39
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0080] ============================================================
+  timestamp: 2026-05-26T03:20:00.000Z  level: ERROR
+  service: order-service  trace_id: 00000000000000000000000000000050
+  message: Processing request batch-8, items_processed=560, latency_ms=40
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0081] ============================================================
+  timestamp: 2026-05-26T03:21:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000051
+  message: Processing request batch-8, items_processed=567, latency_ms=41
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0082] ============================================================
+  timestamp: 2026-05-26T03:22:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000052
+  message: Processing request batch-8, items_processed=574, latency_ms=42
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0083] ============================================================
+  timestamp: 2026-05-26T03:23:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000053
+  message: Processing request batch-8, items_processed=581, latency_ms=43
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0084] ============================================================
+  timestamp: 2026-05-26T03:24:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000054
+  message: Processing request batch-8, items_processed=588, latency_ms=44
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0085] ============================================================
+  timestamp: 2026-05-26T03:25:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000055
+  message: Processing request batch-8, items_processed=595, latency_ms=45
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0086] ============================================================
+  timestamp: 2026-05-26T03:26:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000056
+  message: Processing request batch-8, items_processed=602, latency_ms=46
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0087] ============================================================
+  timestamp: 2026-05-26T03:27:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000057
+  message: Processing request batch-8, items_processed=609, latency_ms=47
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0088] ============================================================
+  timestamp: 2026-05-26T03:28:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000058
+  message: Processing request batch-8, items_processed=616, latency_ms=48
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0089] ============================================================
+  timestamp: 2026-05-26T03:29:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000059
+  message: Processing request batch-8, items_processed=623, latency_ms=49
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0090] ============================================================
+  timestamp: 2026-05-26T03:30:00.000Z  level: WARN
+  service: api-gateway  trace_id: 0000000000000000000000000000005a
+  message: Processing request batch-9, items_processed=630, latency_ms=50
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0091] ============================================================
+  timestamp: 2026-05-26T03:31:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000005b
+  message: Processing request batch-9, items_processed=637, latency_ms=51
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0092] ============================================================
+  timestamp: 2026-05-26T03:32:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000005c
+  message: Processing request batch-9, items_processed=644, latency_ms=52
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0093] ============================================================
+  timestamp: 2026-05-26T03:33:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000005d
+  message: Processing request batch-9, items_processed=651, latency_ms=53
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0094] ============================================================
+  timestamp: 2026-05-26T03:34:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000005e
+  message: Processing request batch-9, items_processed=658, latency_ms=54
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0095] ============================================================
+  timestamp: 2026-05-26T03:35:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000005f
+  message: Processing request batch-9, items_processed=665, latency_ms=55
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0096] ============================================================
+  timestamp: 2026-05-26T04:36:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000060
+  message: Processing request batch-9, items_processed=672, latency_ms=56
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0097] ============================================================
+  timestamp: 2026-05-26T04:37:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000061
+  message: Processing request batch-9, items_processed=679, latency_ms=57
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0098] ============================================================
+  timestamp: 2026-05-26T04:38:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000062
+  message: Processing request batch-9, items_processed=686, latency_ms=58
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0099] ============================================================
+  timestamp: 2026-05-26T04:39:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000063
+  message: Processing request batch-9, items_processed=693, latency_ms=59
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0100] ============================================================
+  timestamp: 2026-05-26T04:40:00.000Z  level: ERROR
+  service: user-service  trace_id: 00000000000000000000000000000064
+  message: Processing request batch-10, items_processed=700, latency_ms=10
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0101] ============================================================
+  timestamp: 2026-05-26T04:41:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000065
+  message: Processing request batch-10, items_processed=707, latency_ms=11
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0102] ============================================================
+  timestamp: 2026-05-26T04:42:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000066
+  message: Processing request batch-10, items_processed=714, latency_ms=12
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0103] ============================================================
+  timestamp: 2026-05-26T04:43:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000067
+  message: Processing request batch-10, items_processed=721, latency_ms=13
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0104] ============================================================
+  timestamp: 2026-05-26T04:44:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000068
+  message: Processing request batch-10, items_processed=728, latency_ms=14
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0105] ============================================================
+  timestamp: 2026-05-26T04:45:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000069
+  message: Processing request batch-10, items_processed=735, latency_ms=15
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0106] ============================================================
+  timestamp: 2026-05-26T04:46:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000006a
+  message: Processing request batch-10, items_processed=742, latency_ms=16
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0107] ============================================================
+  timestamp: 2026-05-26T04:47:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000006b
+  message: Processing request batch-10, items_processed=749, latency_ms=17
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0108] ============================================================
+  timestamp: 2026-05-26T04:48:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000006c
+  message: Processing request batch-10, items_processed=756, latency_ms=18
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0109] ============================================================
+  timestamp: 2026-05-26T04:49:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000006d
+  message: Processing request batch-10, items_processed=763, latency_ms=19
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0110] ============================================================
+  timestamp: 2026-05-26T04:50:00.000Z  level: WARN
+  service: order-service  trace_id: 0000000000000000000000000000006e
+  message: Processing request batch-11, items_processed=770, latency_ms=20
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0111] ============================================================
+  timestamp: 2026-05-26T04:51:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000006f
+  message: Processing request batch-11, items_processed=777, latency_ms=21
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0112] ============================================================
+  timestamp: 2026-05-26T04:52:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000070
+  message: Processing request batch-11, items_processed=784, latency_ms=22
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0113] ============================================================
+  timestamp: 2026-05-26T04:53:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000071
+  message: Processing request batch-11, items_processed=791, latency_ms=23
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0114] ============================================================
+  timestamp: 2026-05-26T04:54:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000072
+  message: Processing request batch-11, items_processed=798, latency_ms=24
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0115] ============================================================
+  timestamp: 2026-05-26T04:55:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000073
+  message: Processing request batch-11, items_processed=805, latency_ms=25
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0116] ============================================================
+  timestamp: 2026-05-26T04:56:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000074
+  message: Processing request batch-11, items_processed=812, latency_ms=26
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0117] ============================================================
+  timestamp: 2026-05-26T04:57:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000075
+  message: Processing request batch-11, items_processed=819, latency_ms=27
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0118] ============================================================
+  timestamp: 2026-05-26T04:58:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000076
+  message: Processing request batch-11, items_processed=826, latency_ms=28
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0119] ============================================================
+  timestamp: 2026-05-26T04:59:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000077
+  message: Processing request batch-11, items_processed=833, latency_ms=29
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0120] ============================================================
+  timestamp: 2026-05-26T05:00:00.000Z  level: ERROR
+  service: api-gateway  trace_id: 00000000000000000000000000000078
+  message: Processing request batch-12, items_processed=840, latency_ms=30
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0121] ============================================================
+  timestamp: 2026-05-26T05:01:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000079
+  message: Processing request batch-12, items_processed=847, latency_ms=31
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0122] ============================================================
+  timestamp: 2026-05-26T05:02:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000007a
+  message: Processing request batch-12, items_processed=854, latency_ms=32
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0123] ============================================================
+  timestamp: 2026-05-26T05:03:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000007b
+  message: Processing request batch-12, items_processed=861, latency_ms=33
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0124] ============================================================
+  timestamp: 2026-05-26T05:04:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000007c
+  message: Processing request batch-12, items_processed=868, latency_ms=34
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0125] ============================================================
+  timestamp: 2026-05-26T05:05:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000007d
+  message: Processing request batch-12, items_processed=875, latency_ms=35
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0126] ============================================================
+  timestamp: 2026-05-26T05:06:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000007e
+  message: Processing request batch-12, items_processed=882, latency_ms=36
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0127] ============================================================
+  timestamp: 2026-05-26T05:07:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000007f
+  message: Processing request batch-12, items_processed=889, latency_ms=37
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0128] ============================================================
+  timestamp: 2026-05-26T05:08:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000080
+  message: Processing request batch-12, items_processed=896, latency_ms=38
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0129] ============================================================
+  timestamp: 2026-05-26T05:09:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000081
+  message: Processing request batch-12, items_processed=903, latency_ms=39
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0130] ============================================================
+  timestamp: 2026-05-26T05:10:00.000Z  level: WARN
+  service: user-service  trace_id: 00000000000000000000000000000082
+  message: Processing request batch-13, items_processed=910, latency_ms=40
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0131] ============================================================
+  timestamp: 2026-05-26T05:11:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000083
+  message: Processing request batch-13, items_processed=917, latency_ms=41
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0132] ============================================================
+  timestamp: 2026-05-26T05:12:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000084
+  message: Processing request batch-13, items_processed=924, latency_ms=42
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0133] ============================================================
+  timestamp: 2026-05-26T05:13:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000085
+  message: Processing request batch-13, items_processed=931, latency_ms=43
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0134] ============================================================
+  timestamp: 2026-05-26T05:14:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000086
+  message: Processing request batch-13, items_processed=938, latency_ms=44
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0135] ============================================================
+  timestamp: 2026-05-26T05:15:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000087
+  message: Processing request batch-13, items_processed=945, latency_ms=45
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0136] ============================================================
+  timestamp: 2026-05-26T05:16:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000088
+  message: Processing request batch-13, items_processed=952, latency_ms=46
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0137] ============================================================
+  timestamp: 2026-05-26T05:17:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000089
+  message: Processing request batch-13, items_processed=959, latency_ms=47
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0138] ============================================================
+  timestamp: 2026-05-26T05:18:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000008a
+  message: Processing request batch-13, items_processed=966, latency_ms=48
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0139] ============================================================
+  timestamp: 2026-05-26T05:19:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000008b
+  message: Processing request batch-13, items_processed=973, latency_ms=49
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0140] ============================================================
+  timestamp: 2026-05-26T05:20:00.000Z  level: ERROR
+  service: order-service  trace_id: 0000000000000000000000000000008c
+  message: Processing request batch-14, items_processed=980, latency_ms=50
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0141] ============================================================
+  timestamp: 2026-05-26T05:21:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000008d
+  message: Processing request batch-14, items_processed=987, latency_ms=51
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0142] ============================================================
+  timestamp: 2026-05-26T05:22:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000008e
+  message: Processing request batch-14, items_processed=994, latency_ms=52
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0143] ============================================================
+  timestamp: 2026-05-26T05:23:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000008f
+  message: Processing request batch-14, items_processed=1001, latency_ms=53
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0144] ============================================================
+  timestamp: 2026-05-26T06:24:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000090
+  message: Processing request batch-14, items_processed=1008, latency_ms=54
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0145] ============================================================
+  timestamp: 2026-05-26T06:25:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000091
+  message: Processing request batch-14, items_processed=1015, latency_ms=55
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0146] ============================================================
+  timestamp: 2026-05-26T06:26:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000092
+  message: Processing request batch-14, items_processed=1022, latency_ms=56
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0147] ============================================================
+  timestamp: 2026-05-26T06:27:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000093
+  message: Processing request batch-14, items_processed=1029, latency_ms=57
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0148] ============================================================
+  timestamp: 2026-05-26T06:28:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000094
+  message: Processing request batch-14, items_processed=1036, latency_ms=58
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0149] ============================================================
+  timestamp: 2026-05-26T06:29:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000095
+  message: Processing request batch-14, items_processed=1043, latency_ms=59
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0150] ============================================================
+  timestamp: 2026-05-26T06:30:00.000Z  level: WARN
+  service: api-gateway  trace_id: 00000000000000000000000000000096
+  message: Processing request batch-15, items_processed=1050, latency_ms=10
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0151] ============================================================
+  timestamp: 2026-05-26T06:31:00.000Z  level: INFO
+  service: user-service  trace_id: 00000000000000000000000000000097
+  message: Processing request batch-15, items_processed=1057, latency_ms=11
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0152] ============================================================
+  timestamp: 2026-05-26T06:32:00.000Z  level: INFO
+  service: order-service  trace_id: 00000000000000000000000000000098
+  message: Processing request batch-15, items_processed=1064, latency_ms=12
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0153] ============================================================
+  timestamp: 2026-05-26T06:33:00.000Z  level: INFO
+  service: api-gateway  trace_id: 00000000000000000000000000000099
+  message: Processing request batch-15, items_processed=1071, latency_ms=13
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0154] ============================================================
+  timestamp: 2026-05-26T06:34:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000009a
+  message: Processing request batch-15, items_processed=1078, latency_ms=14
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0155] ============================================================
+  timestamp: 2026-05-26T06:35:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000009b
+  message: Processing request batch-15, items_processed=1085, latency_ms=15
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0156] ============================================================
+  timestamp: 2026-05-26T06:36:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000009c
+  message: Processing request batch-15, items_processed=1092, latency_ms=16
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0157] ============================================================
+  timestamp: 2026-05-26T06:37:00.000Z  level: INFO
+  service: user-service  trace_id: 0000000000000000000000000000009d
+  message: Processing request batch-15, items_processed=1099, latency_ms=17
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0158] ============================================================
+  timestamp: 2026-05-26T06:38:00.000Z  level: INFO
+  service: order-service  trace_id: 0000000000000000000000000000009e
+  message: Processing request batch-15, items_processed=1106, latency_ms=18
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0159] ============================================================
+  timestamp: 2026-05-26T06:39:00.000Z  level: INFO
+  service: api-gateway  trace_id: 0000000000000000000000000000009f
+  message: Processing request batch-15, items_processed=1113, latency_ms=19
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0160] ============================================================
+  timestamp: 2026-05-26T06:40:00.000Z  level: ERROR
+  service: user-service  trace_id: 000000000000000000000000000000a0
+  message: Processing request batch-16, items_processed=1120, latency_ms=20
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0161] ============================================================
+  timestamp: 2026-05-26T06:41:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000a1
+  message: Processing request batch-16, items_processed=1127, latency_ms=21
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0162] ============================================================
+  timestamp: 2026-05-26T06:42:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000a2
+  message: Processing request batch-16, items_processed=1134, latency_ms=22
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0163] ============================================================
+  timestamp: 2026-05-26T06:43:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000a3
+  message: Processing request batch-16, items_processed=1141, latency_ms=23
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0164] ============================================================
+  timestamp: 2026-05-26T06:44:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000a4
+  message: Processing request batch-16, items_processed=1148, latency_ms=24
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0165] ============================================================
+  timestamp: 2026-05-26T06:45:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000a5
+  message: Processing request batch-16, items_processed=1155, latency_ms=25
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0166] ============================================================
+  timestamp: 2026-05-26T06:46:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000a6
+  message: Processing request batch-16, items_processed=1162, latency_ms=26
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0167] ============================================================
+  timestamp: 2026-05-26T06:47:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000a7
+  message: Processing request batch-16, items_processed=1169, latency_ms=27
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0168] ============================================================
+  timestamp: 2026-05-26T07:48:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000a8
+  message: Processing request batch-16, items_processed=1176, latency_ms=28
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0169] ============================================================
+  timestamp: 2026-05-26T07:49:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000a9
+  message: Processing request batch-16, items_processed=1183, latency_ms=29
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0170] ============================================================
+  timestamp: 2026-05-26T07:50:00.000Z  level: WARN
+  service: order-service  trace_id: 000000000000000000000000000000aa
+  message: Processing request batch-17, items_processed=1190, latency_ms=30
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0171] ============================================================
+  timestamp: 2026-05-26T07:51:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000ab
+  message: Processing request batch-17, items_processed=1197, latency_ms=31
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0172] ============================================================
+  timestamp: 2026-05-26T07:52:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000ac
+  message: Processing request batch-17, items_processed=1204, latency_ms=32
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0173] ============================================================
+  timestamp: 2026-05-26T07:53:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000ad
+  message: Processing request batch-17, items_processed=1211, latency_ms=33
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0174] ============================================================
+  timestamp: 2026-05-26T07:54:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000ae
+  message: Processing request batch-17, items_processed=1218, latency_ms=34
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0175] ============================================================
+  timestamp: 2026-05-26T07:55:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000af
+  message: Processing request batch-17, items_processed=1225, latency_ms=35
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0176] ============================================================
+  timestamp: 2026-05-26T07:56:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000b0
+  message: Processing request batch-17, items_processed=1232, latency_ms=36
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0177] ============================================================
+  timestamp: 2026-05-26T07:57:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000b1
+  message: Processing request batch-17, items_processed=1239, latency_ms=37
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0178] ============================================================
+  timestamp: 2026-05-26T07:58:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000b2
+  message: Processing request batch-17, items_processed=1246, latency_ms=38
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0179] ============================================================
+  timestamp: 2026-05-26T07:59:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000b3
+  message: Processing request batch-17, items_processed=1253, latency_ms=39
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0180] ============================================================
+  timestamp: 2026-05-26T07:00:00.000Z  level: ERROR
+  service: api-gateway  trace_id: 000000000000000000000000000000b4
+  message: Processing request batch-18, items_processed=1260, latency_ms=40
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0181] ============================================================
+  timestamp: 2026-05-26T07:01:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000b5
+  message: Processing request batch-18, items_processed=1267, latency_ms=41
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0182] ============================================================
+  timestamp: 2026-05-26T07:02:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000b6
+  message: Processing request batch-18, items_processed=1274, latency_ms=42
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0183] ============================================================
+  timestamp: 2026-05-26T07:03:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000b7
+  message: Processing request batch-18, items_processed=1281, latency_ms=43
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0184] ============================================================
+  timestamp: 2026-05-26T07:04:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000b8
+  message: Processing request batch-18, items_processed=1288, latency_ms=44
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0185] ============================================================
+  timestamp: 2026-05-26T07:05:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000b9
+  message: Processing request batch-18, items_processed=1295, latency_ms=45
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0186] ============================================================
+  timestamp: 2026-05-26T07:06:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000ba
+  message: Processing request batch-18, items_processed=1302, latency_ms=46
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0187] ============================================================
+  timestamp: 2026-05-26T07:07:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000bb
+  message: Processing request batch-18, items_processed=1309, latency_ms=47
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0188] ============================================================
+  timestamp: 2026-05-26T07:08:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000bc
+  message: Processing request batch-18, items_processed=1316, latency_ms=48
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0189] ============================================================
+  timestamp: 2026-05-26T07:09:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000bd
+  message: Processing request batch-18, items_processed=1323, latency_ms=49
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production
+
+[0190] ============================================================
+  timestamp: 2026-05-26T07:10:00.000Z  level: WARN
+  service: user-service  trace_id: 000000000000000000000000000000be
+  message: Processing request batch-19, items_processed=1330, latency_ms=50
+  metadata: pod=k8s-worker-0, region=cn-bj, env=production
+
+[0191] ============================================================
+  timestamp: 2026-05-26T07:11:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000bf
+  message: Processing request batch-19, items_processed=1337, latency_ms=51
+  metadata: pod=k8s-worker-1, region=cn-sh, env=production
+
+[0192] ============================================================
+  timestamp: 2026-05-26T08:12:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000c0
+  message: Processing request batch-19, items_processed=1344, latency_ms=52
+  metadata: pod=k8s-worker-2, region=cn-bj, env=production
+
+[0193] ============================================================
+  timestamp: 2026-05-26T08:13:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000c1
+  message: Processing request batch-19, items_processed=1351, latency_ms=53
+  metadata: pod=k8s-worker-3, region=cn-sh, env=production
+
+[0194] ============================================================
+  timestamp: 2026-05-26T08:14:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000c2
+  message: Processing request batch-19, items_processed=1358, latency_ms=54
+  metadata: pod=k8s-worker-4, region=cn-bj, env=production
+
+[0195] ============================================================
+  timestamp: 2026-05-26T08:15:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000c3
+  message: Processing request batch-19, items_processed=1365, latency_ms=55
+  metadata: pod=k8s-worker-0, region=cn-sh, env=production
+
+[0196] ============================================================
+  timestamp: 2026-05-26T08:16:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000c4
+  message: Processing request batch-19, items_processed=1372, latency_ms=56
+  metadata: pod=k8s-worker-1, region=cn-bj, env=production
+
+[0197] ============================================================
+  timestamp: 2026-05-26T08:17:00.000Z  level: INFO
+  service: order-service  trace_id: 000000000000000000000000000000c5
+  message: Processing request batch-19, items_processed=1379, latency_ms=57
+  metadata: pod=k8s-worker-2, region=cn-sh, env=production
+
+[0198] ============================================================
+  timestamp: 2026-05-26T08:18:00.000Z  level: INFO
+  service: api-gateway  trace_id: 000000000000000000000000000000c6
+  message: Processing request batch-19, items_processed=1386, latency_ms=58
+  metadata: pod=k8s-worker-3, region=cn-bj, env=production
+
+[0199] ============================================================
+  timestamp: 2026-05-26T08:19:00.000Z  level: INFO
+  service: user-service  trace_id: 000000000000000000000000000000c7
+  message: Processing request batch-19, items_processed=1393, latency_ms=59
+  metadata: pod=k8s-worker-4, region=cn-sh, env=production

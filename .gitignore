@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 tmp
 conversation_log
+tool_results_cache
