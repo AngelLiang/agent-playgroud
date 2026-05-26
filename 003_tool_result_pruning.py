@@ -482,6 +482,129 @@ def _show_messages(messages: list[dict], title: str) -> None:
     print(f"  总大小: {total_bytes/1024:.0f} KB\n")
 
 
+# ── 消息日志保存 ──────────────────────────────────────────────────────────────
+
+def _make_user_view(messages: list[dict]) -> list[dict]:
+    """将后端 messages 转换为用户视角的消息。
+
+    转换规则：
+      - system 消息 → 隐藏
+      - user 消息（原始问题）→ 保留
+      - tool_use（assistant + Action:）→ 替换为工具调用状态提示
+      - Observation（user + Observation: 前缀）→ 替换为工具执行摘要
+      - Final Answer（assistant 不含 Action:）→ 保留
+    """
+    result: list[dict] = []
+    for msg in messages:
+        role = msg.get("role", "")
+        content = msg.get("content", "")
+
+        if role == "system":
+            continue  # 用户看不到 system prompt
+
+        if role == "user" and isinstance(content, str) and content.startswith("Observation:"):
+            tool_name = msg.get("tool_name", "?")
+            is_truncated = "<<<TRUNCATED>>>" in content
+            size = len(content.encode("utf-8"))
+            summary = (
+                f"[工具调用完成] {tool_name}\n"
+                f"返回内容大小: {size / 1024:.1f} KB"
+            )
+            if is_truncated:
+                summary += "\n(内容已截断，LLM 可通过 read_file 按需读取完整内容)"
+            result.append({"role": "tool_status", "content": summary, "tool_name": tool_name})
+            continue
+
+        if role == "assistant" and ToolResultPruner._is_tool_use(msg):
+            parsed = ToolResultPruner._parse_tool_call(content)
+            tool_name = parsed["action"] if parsed else "?"
+            result.append({
+                "role": "tool_status",
+                "content": f"[正在调用工具] {tool_name}...",
+                "tool_name": tool_name,
+            })
+            continue
+
+        result.append({"role": role, "content": content})
+    return result
+
+
+def save_pruning_logs(backend_msgs: list[dict], pruner_stats: dict, tag: str = "") -> None:
+    """保存后端消息和用户视角消息到 conversation_log/，方便对比学习。
+
+    生成三个文件：
+      - pruning_backend_{tag}_{timestamp}.json  — 发给 LLM 的完整消息
+      - pruning_user_view_{tag}_{timestamp}.json — 用户看到的消息
+      - pruning_comparison_{tag}_{timestamp}.json — 逐条对比
+    """
+    log_dir = Path(__file__).parent / "conversation_log"
+    log_dir.mkdir(exist_ok=True)
+
+    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    tag_prefix = f"pruning_{tag}_" if tag else "pruning_"
+
+    user_view = _make_user_view(backend_msgs)
+
+    # 1. 后端消息
+    backend_path = log_dir / f"{tag_prefix}backend_{ts}.json"
+    with open(backend_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "description": "发给 LLM 的完整消息列表（包含 Observation 原始内容、截断标记等）",
+            "pruner_stats": pruner_stats,
+            "messages": backend_msgs,
+        }, f, ensure_ascii=False, indent=2)
+
+    # 2. 用户视角
+    user_path = log_dir / f"{tag_prefix}user_view_{ts}.json"
+    with open(user_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "description": "用户看到的消息列表（推理过程隐藏，工具调用替换为状态提示）",
+            "pruner_stats": pruner_stats,
+            "messages": user_view,
+        }, f, ensure_ascii=False, indent=2)
+
+    # 3. 逐条对比
+    comparison: list[dict] = []
+    for i, backend_msg in enumerate(backend_msgs):
+        role = backend_msg.get("role", "?")
+        content = backend_msg.get("content", "")
+        backend_summary = content[:200] + ("..." if len(content) > 200 else "")
+
+        # 找到对应的用户视角消息
+        user_match = _make_user_view([backend_msg])
+        user_summary = user_match[0]["content"][:200] if user_match else "(隐藏)"
+
+        comparison.append({
+            "index": i,
+            "backend": {
+                "role": role,
+                "tool_name": backend_msg.get("tool_name", ""),
+                "preview": backend_summary,
+                "size_bytes": len(content.encode("utf-8")),
+            },
+            "user_view": {
+                "role": user_match[0]["role"] if user_match else "hidden",
+                "preview": user_summary,
+            },
+        })
+
+    comp_path = log_dir / f"{tag_prefix}comparison_{ts}.json"
+    with open(comp_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "description": "逐条对比：后端发给 LLM 的消息 vs 用户视角看到的消息",
+            "legend": {
+                "backend": "发给 LLM 的消息（包含完整 Observation、截断标记、Thought 推理过程）",
+                "user_view": "用户看到的消息（system 隐藏、工具调用显示为状态提示、Observation 不展示原始内容）",
+            },
+            "comparison": comparison,
+        }, f, ensure_ascii=False, indent=2)
+
+    print(f"\n  日志已保存:")
+    print(f"    后端消息:   {backend_path.name}")
+    print(f"    用户视角:   {user_path.name}")
+    print(f"    逐条对比:   {comp_path.name}")
+
+
 def demo_with_ai():
     """主演示：运行真实 ReAct 对话，展示截断效果。"""
     # 如果没有配置 API key，使用模拟数据演示
@@ -536,6 +659,9 @@ def demo_with_ai():
 
         _show_messages(pre_final, "阶段 3: 截断后")
         print(f"统计: {json.dumps(pruner.stats, ensure_ascii=False)}")
+
+        # 保存日志到 conversation_log/
+        save_pruning_logs(pre_final, pruner.stats, tag="ai")
     else:
         print("\nAI 没有调用工具，无截断演示。")
 
@@ -585,6 +711,9 @@ def demo_simulated():
 
     _show_messages(messages, "截断后")
     print(f"统计: {json.dumps(pruner.stats, ensure_ascii=False)}")
+
+    # 保存日志到 conversation_log/
+    save_pruning_logs(messages, pruner.stats, tag="sim")
 
     # 展示落盘文件
     offload_dir = Path("tool_results_cache")
