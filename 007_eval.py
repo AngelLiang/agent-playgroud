@@ -1,38 +1,24 @@
 """
-使用 Arize Phoenix 评估 OpenAI SDK ReAct Agent 的示例。
+使用 LLM-as-Judge 评估 ReAct Agent 的示例。
 
-本示例演示 Phoenix 评估 Agent 的多个维度：
+评估维度（文本模式，适用于所有 OpenAI 兼容 API）：
+  1. 工具选择评估 — Agent 是否为任务选择了正确的工具
+  2. 忠实度评估 — 回答是否忠实于工具结果，有无幻觉
+  3. 正确性评估 — 答案是否事实正确
 
-  Phoenix 内置评估器（需要 API 支持 structured output）：
-    1. 工具选择评估（ToolSelectionEvaluator） — Agent 是否为任务选择了正确的工具
-    2. 工具调用评估（ToolInvocationEvaluator） — 工具参数是否正确、格式是否规范
-    3. 工具响应处理评估（ToolResponseHandlingEvaluator） — Agent 是否正确解释了工具结果
-    4. 忠实度评估（FaithfulnessEvaluator） — 回答是否忠实于上下文，有无幻觉
-    5. 正确性评估（CorrectnessEvaluator） — 答案是否事实正确
+自定义评估器（纯代码，不依赖 LLM）：
+  4. 步骤效率 — Agent 是否用最少步骤完成任务
+  5. Token 效率 — Token 消耗评估
+  6. 答案完整性 — 自定义 LLM-as-Judge 评估器
 
-  文本模式评估器（适用于所有 OpenAI 兼容 API）：
-    - 同样的评估维度，但使用 generate_text() + 正则解析代替 structured output
-
-  自定义评估器（@create_evaluator 装饰器）：
-    - 步骤效率 — 代码类评估器，评估 Agent 是否用最少步骤完成任务
-    - Token 效率 — 代码类评估器，评估 Token 消耗
-    - 答案完整性 — 演示如何用 LLMEvaluator 创建自定义 LLM-as-Judge 评估器
-
-  可观测性：
-    - phoenix.otel.register() 自动为 OpenAI SDK 添加 OpenTelemetry 埋点
-    - phoenix.launch_app() 启动 Web UI 查看 trace 瀑布图和评估结果
+每次运行自动保存完整对话历史到 conversation_log/ 目录，方便事后审查
+每一轮发给 LLM 的消息（system prompt、工具返回等）。
 
 运行方式：
-  uv run python 007_eval.py                    # 运行评估（默认不启动 UI）
-  uv run python 007_eval.py --with-tracing     # 运行评估 + 导出 trace 到 Phoenix
-  uv run python 007_eval.py --model gpt-4o --eval-model gpt-4o-mini  # 指定模型
-
-如需 Phoenix UI 可视化 trace：
-  # 终端 1：启动 Phoenix 服务
-  python -m phoenix.server.main serve
-
-  # 终端 2：运行评估并导出 trace
-  uv run python 007_eval.py --with-tracing
+  uv run python 007_eval.py                              # 运行全部用例
+  uv run python 007_eval.py --difficulty hard            # 只跑困难用例
+  uv run python 007_eval.py --model gpt-4o               # 指定 Agent 模型
+  uv run python 007_eval.py --eval-model gpt-4o-mini     # 指定评估裁判模型
 """
 
 from __future__ import annotations
@@ -53,20 +39,11 @@ from openai import OpenAI
 
 load_dotenv()
 
-# ── Phoenix 导入 ────────────────────────────────────────────────────────────
-# Phoenix Evals：LLM-as-Judge 评估器
+# ── Phoenix Evals：LLM-as-Judge 评估器 ────────────────────────────────────
 from phoenix.evals import (
     LLM,
     LLMEvaluator,
     create_evaluator,
-    evaluate_dataframe,
-)
-from phoenix.evals.metrics import (
-    CorrectnessEvaluator,
-    FaithfulnessEvaluator,
-    ToolInvocationEvaluator,
-    ToolResponseHandlingEvaluator,
-    ToolSelectionEvaluator,
 )
 
 # ── 复用 001_react 中的 ReAct 引擎 ──────────────────────────────────────────
@@ -79,61 +56,7 @@ _parse_step = _react._parse_step
 _tools = _react._tools
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# 第一节：OpenTelemetry 自动埋点 —— 让所有 OpenAI 调用自动产生 trace
-# ═══════════════════════════════════════════════════════════════════════════════
-
-
-def setup_phoenix_tracing(
-    endpoint: str | None = None,
-    project_name: str = "react-agent-eval",
-) -> Any:
-    """
-    注册 Phoenix OpenTelemetry 自动埋点。
-
-    通过 auto_instrument=True 自动为 OpenAI SDK 添加 Hook，
-    每次 API 调用都会产生 span，记录：
-      - 模型名称、请求/响应的 token 数
-      - 调用延迟
-      - 完整的 prompt 和 completion 内容
-      - LLM 提供商（openai / anthropic 等）
-
-    Args:
-        endpoint: Phoenix 服务的 OTLP 端点。如果为 None 则不导出 trace，
-                  只开启 auto_instrument（span 数据不会被发送）。
-        project_name: Phoenix 项目名称。
-
-    使用方式：
-        # 先在一个终端中启动 Phoenix 服务：
-        python -m phoenix.server.main serve
-
-        # 然后运行脚本（会自动连接 localhost:6006）：
-        uv run python 007_eval.py
-    """
-    import phoenix.otel
-
-    if endpoint is None:
-        # 不配置 exporter，只做 auto-instrumentation
-        # span 数据在本地产生但不会被导出到任何地方
-        tracer_provider = phoenix.otel.register(
-            project_name=project_name,
-            auto_instrument=True,
-        )
-        print(f"[Tracing] Phoenix OTEL 自动埋点已注册（项目: {project_name}）")
-        print("[Tracing] 未连接 Phoenix 服务，span 不会导出")
-    else:
-        tracer_provider = phoenix.otel.register(
-            project_name=project_name,
-            auto_instrument=True,
-            endpoint=endpoint,
-            protocol="http/protobuf",
-        )
-        print(f"[Tracing] Phoenix OTEL 已注册，端点: {endpoint}")
-
-    return tracer_provider
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# 第二节：可追踪的 ReAct Agent
+# 第一节：可追踪的 ReAct Agent
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
@@ -591,16 +514,12 @@ def run_evals(
     model: str | None = None,
 ) -> dict[str, pd.DataFrame]:
     """
-    对所有 trace 运行全套评估。
+    对所有 trace 运行文本模式 LLM-as-Judge 评估。
 
-    包含三类评估器：
-      1. Phoenix 内置 LLM-as-Judge 评估器 — 需要 API 支持 structured output
-      2. 文本模式评估器 — 使用 generate_text()，适用于所有 OpenAI 兼容 API
-      3. 纯代码评估器 — 不依赖 LLM，总是可用
+    使用 generate_text() + 正则解析，适用于所有 OpenAI 兼容 API，
+    不需要 structured output 支持。
 
-    返回字典：
-      key = 评估器名称
-      value = 评估结果 DataFrame（含 score 和 explanation）
+    返回字典：key = 评估器名称, value = 评估结果 DataFrame
     """
     model = model or os.getenv("MODEL") or "gpt-4o-mini"
     eval_llm = LLM(
@@ -611,83 +530,8 @@ def run_evals(
     )
 
     results: dict[str, pd.DataFrame] = {}
-
-    # ── 探测 structured output 是否可用 ──
-    has_structured_output = _probe_structured_output(eval_llm)
-
-    if has_structured_output:
-        # 使用 Phoenix 内置评估器（LLM-as-Judge with structured output）
-        _run_builtin_evals(traces, eval_llm, results)
-    else:
-        print("    (使用文本模式评估器代替)")
-        _run_text_based_evals(traces, eval_llm, results)
-
+    _run_text_based_evals(traces, eval_llm, results)
     return results
-
-
-def _probe_structured_output(eval_llm: LLM) -> bool:
-    """快速探测 API 是否支持 structured output (json_schema response_format)。"""
-    try:
-        eval_llm.generate_classification(
-            prompt="Say hello.",
-            labels=["yes", "no"],
-            include_explanation=False,
-        )
-        return True
-    except Exception:
-        return False
-
-
-def _run_builtin_evals(
-    traces: list[dict],
-    eval_llm: LLM,
-    results: dict[str, pd.DataFrame],
-) -> None:
-    """使用 Phoenix 内置评估器进行评估（需要 structured output）。"""
-    builtin_evaluators: list[tuple[str, Any, pd.DataFrame]] = [
-        (
-            "工具选择 (ToolSelection)",
-            ToolSelectionEvaluator(llm=eval_llm),
-            build_tool_selection_df(traces),
-        ),
-        (
-            "工具调用 (ToolInvocation)",
-            ToolInvocationEvaluator(llm=eval_llm),
-            build_tool_invocation_df(traces),
-        ),
-        (
-            "工具响应处理 (ToolResponseHandling)",
-            ToolResponseHandlingEvaluator(llm=eval_llm),
-            build_tool_response_df(traces),
-        ),
-        (
-            "忠实度 (Faithfulness)",
-            FaithfulnessEvaluator(llm=eval_llm),
-            build_faithfulness_df(traces),
-        ),
-        (
-            "正确性 (Correctness)",
-            CorrectnessEvaluator(llm=eval_llm),
-            build_correctness_df(traces),
-        ),
-    ]
-
-    for name, evaluator, df in builtin_evaluators:
-        if df.empty:
-            print(f"\n  [{name}] 无数据，跳过")
-            continue
-
-        print(f"\n  [{name}] 评估 {len(df)} 条记录 ...")
-        try:
-            result_df = evaluate_dataframe(
-                dataframe=df,
-                evaluators=[evaluator],
-                exit_on_error=True,
-            )
-            results[name] = result_df
-            _print_eval_summary(name, result_df)
-        except Exception as e:
-            print(f"    ⚠ 评估失败: {e}")
 
 
 def _run_text_based_evals(
@@ -818,25 +662,6 @@ def _run_text_based_evals(
     return results
 
 
-def _print_eval_summary(name: str, df: pd.DataFrame) -> None:
-    """打印评估摘要统计。"""
-    score_col = [c for c in df.columns if c.endswith("_score") or c == "score"]
-    label_col = [c for c in df.columns if c.endswith("_label") or c == "label"]
-
-    if score_col:
-        scores = df[score_col[0]].dropna()
-        if not scores.empty:
-            print(
-                f"    平均分: {scores.mean():.2f}  "
-                f"(min={scores.min():.2f}, max={scores.max():.2f}, "
-                f"n={len(scores)})"
-            )
-
-    if label_col:
-        labels = df[label_col[0]].dropna()
-        if not labels.empty:
-            counts = labels.value_counts()
-            print(f"    标签分布: {dict(counts)}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1155,37 +980,6 @@ def _print_optimization_suggestions(
     print("")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# 第八节：Phoenix UI 可视化
-# ═══════════════════════════════════════════════════════════════════════════════
-
-
-def launch_phoenix_ui() -> Any | None:
-    """
-    尝试启动 Phoenix Web UI 进行可视化分析。
-
-    如果启动失败（如端口冲突、资源不足），则返回 None。
-    可以单独在终端中运行：
-      uv run -m phoenix.server.main serve
-
-    Phoenix UI 提供：
-      - Span 瀑布图：查看每次 LLM 调用的延迟和耗时分布
-      - Trace 树：查看 ReAct 循环的"思考→行动→观察"链路
-      - Token 用量分析：每个步骤的 prompt/completion token 分布
-      - 评估得分对比：不同评估维度下的分数分布
-    """
-    import phoenix as px
-
-    print("\n正在启动 Phoenix UI ...")
-    try:
-        session = px.launch_app()
-        print(f"Phoenix UI 地址: {session.url}")
-        return session
-    except Exception as e:
-        print(f"⚠ Phoenix UI 启动失败: {e}")
-        print("  可以手动启动: uv run -m phoenix.server.main serve")
-        return None
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 主入口
@@ -1194,38 +988,19 @@ def launch_phoenix_ui() -> Any | None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="使用 Arize Phoenix 评估 ReAct Agent"
-    )
-    parser.add_argument(
-        "--no-ui",
-        action="store_true",
-        help="不启动 Phoenix UI（默认不启动）",
-    )
-    parser.add_argument(
-        "--with-tracing",
-        type=str,
-        nargs="?",
-        const="http://127.0.0.1:6006/v1/traces",
-        default=None,
-        help="启用 OTEL tracing 并导出到 Phoenix 服务（需先启动 Phoenix 服务）",
+        description="使用 LLM-as-Judge 评估 ReAct Agent"
     )
     parser.add_argument(
         "--model",
         type=str,
         default=None,
-        help="评估用的 LLM 模型（默认从环境变量 MODEL 读取）",
+        help="Agent 使用的 LLM 模型（默认从环境变量 MODEL 读取）",
     )
     parser.add_argument(
         "--eval-model",
         type=str,
         default=None,
-        help="评估器使用的裁判模型（默认读取环境变量 MODEL）",
-    )
-    parser.add_argument(
-        "--eval-timeout",
-        type=int,
-        default=30,
-        help="单条评估调用的超时秒数（默认 30）",
+        help="评估裁判模型（默认读取环境变量 MODEL）",
     )
     parser.add_argument(
         "--difficulty",
@@ -1236,20 +1011,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    # ── 1. 启动 Phoenix 并注册 OTEL 自动埋点 ──
-    session = None
-    if args.with_tracing:
-        # 用户显式要求 tracing：先尝试连接 Phoenix 服务
-        setup_phoenix_tracing(endpoint=args.with_tracing)
-    elif not args.no_ui:
-        # 尝试启动 Phoenix UI（可能失败）
-        session = launch_phoenix_ui()
-        if session is not None:
-            setup_phoenix_tracing(
-                endpoint=f"http://127.0.0.1:{session.port}/v1/traces"
-            )
-
-    # ── 2. 运行 Agent 获取 traces ──
+    # ── 1. 运行 Agent 获取 traces ──
     test_cases = build_eval_test_cases(difficulty=args.difficulty)
     easy_count = sum(1 for c in test_cases if c.get("difficulty") == "easy")
     hard_count = sum(1 for c in test_cases if c.get("difficulty") == "hard")
@@ -1272,7 +1034,7 @@ def main() -> None:
             print(f"  ✗ 未能得出答案")
         print(f"  📝 对话记录: {result['conversation_file']}")
 
-    # ── 3. 运行评估器 ──
+    # ── 2. 运行评估器 ──
     print(f"\n\n{'═' * 50}")
     print("运行 LLM-as-Judge 评估器 ...")
     print("（用 LLM 作为裁判，评估 Agent 回答的质量）")
@@ -1280,17 +1042,15 @@ def main() -> None:
 
     eval_results = run_evals(traces, model=args.eval_model)
 
-    # ── 4. 自定义评估器 ──
+    # ── 3. 自定义评估器 ──
     print(f"\n  [自定义评估器]")
     custom_eval_model = args.eval_model or os.getenv("MODEL") or "gpt-4o-mini"
 
-    # 4a. 代码类评估器（不依赖 LLM，总是可用）
     step_scores = step_efficiency.evaluate({"traces": traces})
     token_scores = token_efficiency.evaluate({"traces": traces})
     print(f"    步骤效率: {step_scores[0].score:.2f}  (分数越高效率越高)")
     print(f"    Token 效率: {token_scores[0].score:.2f} K tokens/用例  (分数越低越好)")
 
-    # 4b. 答案完整性评估（文本模式，兼容所有 API）
     eval_llm = LLM(
         provider="openai",
         model=custom_eval_model,
@@ -1328,19 +1088,8 @@ def main() -> None:
             print(f"\n    答案完整性 平均分: {avg:.2f}")
             eval_results["答案完整性 (文本模式)"] = pd.DataFrame(scores)
 
-    # ── 5. 打印报告 ──
+    # ── 4. 打印报告 ──
     print_eval_report(traces, eval_results)
-
-    # ── 6. 保持 Phoenix UI 运行 ──
-    if session is not None:
-        print("\n按 Ctrl+C 退出 Phoenix UI ...")
-        try:
-            while True:
-                time.sleep(1)
-        except KeyboardInterrupt:
-            print("\n正在关闭 Phoenix UI ...")
-            import phoenix as px
-            px.close_app()
 
 
 if __name__ == "__main__":
