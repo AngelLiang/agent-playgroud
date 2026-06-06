@@ -139,9 +139,10 @@ def search_facts(query: str) -> str:
         "生命的意义": "42（根据道格拉斯·亚当斯）",
         "中国首都": "北京",
     }
-    q = query.lower().strip()
+    q = query.lower().replace(" ", "")
     for key, value in facts.items():
-        if key in q or q in key:
+        key_normalized = key.replace(" ", "")
+        if key_normalized in q or q in key_normalized:
             return value
     return f"没有找到关于「{query}」的事实"
 

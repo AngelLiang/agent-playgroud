@@ -8,6 +8,7 @@ dependencies = [
     "arize-phoenix>=8.0.0",
     "arize-phoenix-evals>=0.9.0",
     "arize-phoenix-otel>=0.9.0",
+    "inspect-ai>=0.3.69",
     "openai>=2.38.0",
     "python-dotenv>=1.2.2",
 ]

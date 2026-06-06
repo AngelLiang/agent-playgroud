@@ -7,3 +7,5 @@ conversation_log
 tool_results_cache
 missions
 memory
+logs
+results
