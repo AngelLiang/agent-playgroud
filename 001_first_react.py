@@ -100,12 +100,15 @@ def query(question, max_turns=5):
 
 
 def wikipedia(q):
-    return httpx.get("https://en.wikipedia.org/w/api.php", params={
+    results = httpx.get("https://en.wikipedia.org/w/api.php", params={
         "action": "query",
         "list": "search",
         "srsearch": q,
         "format": "json"
-    }).json()["query"]["search"][0]["snippet"]
+    }).json()["query"]["search"]
+    if not results:
+        return "未找到相关结果"
+    return results[0]["snippet"]
 
 
 def simon_blog_search(q):
@@ -125,6 +128,8 @@ def simon_blog_search(q):
         "_shape": "array",
         "q": q,
     }).json()
+    if not results:
+        return "未找到相关结果"
     return results[0]["text"]
 
 def calculate(what):
